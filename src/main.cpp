@@ -32,7 +32,7 @@ int main()
     // };
 
     // ウィンドウの作成
-    GLFWwindow *window = glfwCreateWindow(700, 500, "ImGui Example", NULL, NULL);
+    GLFWwindow *window = glfwCreateWindow(700, 500, "Lmnrz", NULL, NULL);
     if (window == NULL)
     {
         std::cerr << "Failed to create GLFW window" << std::endl;
@@ -79,8 +79,8 @@ int main()
         ImGui::NewFrame();
 
         // ImGuiウィジェットの設定
-        ImGui::Begin("Hello, ImGui!");                  // ウィンドウ開始
-        ImGui::Text("This is a simple ImGui example."); // テキスト描画
+        ImGui::Begin("Windows Lmnrz"); // ウィンドウ開始
+        ImGui::Text("HAPPY");          // テキスト描画
         if (ImGui::Button("Close Window"))
         { // ボタン作成
             glfwSetWindowShouldClose(window, true);
