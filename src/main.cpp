@@ -79,8 +79,8 @@ int main()
         ImGui::NewFrame();
 
         // ImGuiウィジェットの設定
-        ImGui::Begin("Windows Lmnrz"); // ウィンドウ開始
-        ImGui::Text("HAPPY");          // テキスト描画
+        ImGui::Begin("Windows Lmnrzzzzz"); // ウィンドウ開始
+        ImGui::Text("HAPPY");              // テキスト描画
         if (ImGui::Button("Close Window"))
         { // ボタン作成
             glfwSetWindowShouldClose(window, true);
