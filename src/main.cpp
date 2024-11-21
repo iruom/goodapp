@@ -61,7 +61,7 @@ int main()
     config.OversampleH = 3; // 水平方向のオーバーサンプリング
     config.OversampleV = 1; // 垂直方向のオーバーサンプリング
     // io.Fonts->AddFontFromFileTTF("/Users/sirem/Library/Fonts/A-OTF-JOMINSTD-LIGHT.OTF", 16.0f);
-    io.Fonts->AddFontFromFileTTF("/Library/Fonts/Inter-Regular.ttf", 16.0f);
+    io.Fonts->AddFontFromFileTTF("../resource/Inter-Regular.ttf", 16.0f);
     // フォントのスケーリング設定
     io.Fonts->TexGlyphPadding = 20; // フォント間隔を少し広げる
     io.FontGlobalScale = 1.0f;      // スケールをデフォルト値に
