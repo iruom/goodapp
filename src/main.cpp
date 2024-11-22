@@ -143,13 +143,11 @@ int main()
         ImFontConfig config;
 
         // フォントの追加 (フォントファイルのパスを確認してください)
-        ImFont *custom_font = io.Fonts->AddFontFromFileTTF("../resource/Inter-Regular.ttf", 32.0f, &config);
+        ImFont *custom_font = io.Fonts->AddFontFromFileTTF("resource/Inter-Regular.ttf", 32.0f, &config);
         if (!custom_font)
         {
             std::cerr << "Failed to load font: ../resource/Inter-Regular.ttf" << std::endl;
         }
-
-        // io.Fonts->AddFontFromFileTTF("../resource/Hutogo.OTF", 32.0f, nullptr, graphyto); // 必要に応じてコメント解除
 
         // フォントのスケーリング設定
         io.Fonts->TexGlyphPadding = 20.0f; // フォント間隔を少し広げる
