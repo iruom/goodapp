@@ -1,4 +1,4 @@
-It's so amazing and beautiful! It's a dream software.
+Amazing
 
-![image](https://github.com/user-attachments/assets/e40fcc48-6ffd-4c2a-b91c-9dc95bc1360b)
+<img width="1003" alt="image" src="https://github.com/user-attachments/assets/f77476bf-0c2d-41fd-9fb3-74e953e6d86e">
 
