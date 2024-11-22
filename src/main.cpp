@@ -6,7 +6,7 @@
 #include "imgui_impl_opengl3.h"
 
 // 背景色の色を保持するグローバル変数
-static float color[] = {0.2f, 0.3f, 0.3f, 1.0f};
+static float color[] = {0.18f, 0.19f, 0.23f, 0.7f};
 
 // フレームバッファサイズ変更コールバック
 void framebuffer_size_callback(GLFWwindow *window, int width, int height)
@@ -32,22 +32,24 @@ void render(GLFWwindow *window)
     ImGui::NewFrame();
 
     // ImGuiウィジェットの設定
-    ImGui::Begin("Blender-like Window"); // ウィンドウ開始
-    ImGui::Text("HAPPY");                // テキスト描画
+    ImGui::Begin("Giant"); // ウィンドウ開始
+    ImGui::Text("Happy");  // テキスト描画
     if (ImGui::Button("Close Window"))
     { // ボタン作成
         glfwSetWindowShouldClose(window, true);
     }
     if (ImGui::Begin("Color Picker"))
     {
+
         ImGui::ColorEdit4("Edit Color", color);
         ImGui::ColorPicker4("Pick Color", color);
-
-        ImGui::End(); // ウィンドウ終了
     }
     ImGui::End(); // ウィンドウ終了
 
-    ImGui::Begin("Die");
+    ImGui::End(); // ウィンドウ終了
+
+    ImGui::Begin("Tools");
+
     static char str0[128] = "Hello, world!";
     static int i1 = 50, i2 = 42;
     ImGui::DragInt("drag int", &i1, 1);
@@ -56,16 +58,16 @@ void render(GLFWwindow *window)
     static float col2[4] = {0.4f, 0.7f, 0.0f, 0.5f};
     ImGui::ColorEdit4("color 2", col2);
 
-    ImGui::Text("Die");
+    ImGui::Text("Tool");
     if (ImGui::IsItemHovered())
-        ImGui::SetTooltip("Group hovered");
+        ImGui::SetTooltip("Nice");
 
-    ImGui::BulletText("Bullet point 1");
-    ImGui::BulletText("Bullet point 2\nOn multiple lines");
+    ImGui::BulletText("1");
+    ImGui::BulletText("2\n3");
     ImGui::Bullet();
-    ImGui::Text("Bullet point 3 (two calls)");
+    ImGui::Text("5");
     ImGui::Bullet();
-    ImGui::SmallButton("Button");
+    ImGui::SmallButton("Bye");
     ImGui::End();
 
     // ImGuiの描画
@@ -97,9 +99,11 @@ int main()
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    // GLFWのウィンドウヒントで透明を有効化
+    glfwWindowHint(GLFW_TRANSPARENT_FRAMEBUFFER, GLFW_TRUE);
 
     // ウィンドウの作成
-    GLFWwindow *window = glfwCreateWindow(700, 500, "Lmnrz", NULL, NULL);
+    GLFWwindow *window = glfwCreateWindow(1200, 800, "Lmnrz", NULL, NULL);
     if (window == NULL)
     {
         std::cerr << "Failed to create GLFW window" << std::endl;
@@ -117,6 +121,9 @@ int main()
         std::cerr << "Failed to initialize GLEW" << std::endl;
         return -1;
     }
+    // ブレンディングを有効化
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     // フレームバッファサイズ変更時のコールバック設定
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
@@ -147,6 +154,7 @@ int main()
         // フォントのスケーリング設定
         io.Fonts->TexGlyphPadding = 20.0f; // フォント間隔を少し広げる
         io.FontGlobalScale = 0.5f;         // スケールをデフォルト値に
+        // io.ConfigFlags |= ImGuiConfigFlags_DockingEnable; // ドッキングを有効化
 
         // 必要に応じてアイコンフォントの統合を行う
         // 例: io.Fonts->AddFontFromFileTTF("path_to_icon_font.ttf", size, &config, icon_ranges);
