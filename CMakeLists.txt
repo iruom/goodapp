@@ -80,7 +80,6 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     target_link_libraries(${PROJECT_NAME}
         OpenGL::GL
         glfw
-        glew32s
         kernel32
         user32
         gdi32
@@ -107,3 +106,8 @@ else() # macOS
         LINK_FLAGS "-ObjC"
     )
 endif()
+
+# ------------------------------
+# 10. コンパイルオプション（GLEW_STATICの設定）
+# ------------------------------
+target_compile_definitions(${PROJECT_NAME} PRIVATE GLEW_STATIC)
