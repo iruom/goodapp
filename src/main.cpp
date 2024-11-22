@@ -6,7 +6,7 @@
 #include "imgui_impl_opengl3.h"
 
 // 背景色の色を保持するグローバル変数
-static float color[] = {0.18f, 0.19f, 0.23f, 0.7f};
+static float color[] = {0.18f, 0.19f, 0.23f, 1.0f};
 
 // フレームバッファサイズ変更コールバック
 void framebuffer_size_callback(GLFWwindow *window, int width, int height)

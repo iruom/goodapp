@@ -9,20 +9,20 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     set(MSYS2_PREFIX "C:/msys64/ucrt64")
     include_directories("${MSYS2_PREFIX}/include")
     link_directories("${MSYS2_PREFIX}/lib")
-elseif(${CMAKE_SYSTEM_NAME} MATCHES "Darwin") # Darwin = macOS
-    # Macの場合、特別な設定は不要
+    add_definitions(-DGLEW_STATIC)  # WindowsではGLEW_STATICを有効化
+elseif(${CMAKE_SYSTEM_NAME} MATCHES "Darwin") # macOS
+    # macOSでは特別な設定は不要
 endif()
 
 # 必要なライブラリを検索
 find_package(OpenGL REQUIRED)
-find_package(GLEW REQUIRED PATHS ${MSYS2_PREFIX}/lib)
 find_package(glfw3 REQUIRED PATHS ${MSYS2_PREFIX}/lib)
 
 # ImGuiのインクルードディレクトリを追加
 include_directories(src/imgui)
 
-# resourceディレクトリをインクルードディレクトリに追加
-include_directories(resource)
+# Glewのインクルードディレクトリを追加
+include_directories(src/glew/include)
 
 # ImGuiのソースファイル
 set(IMGUI_SOURCES
@@ -34,10 +34,16 @@ set(IMGUI_SOURCES
     src/imgui/imgui_impl_opengl3.cpp
 )
 
+# Glewのソースファイル
+set(GLEW_SOURCES
+    src/glew/src/glew.c
+)
+
 # プロジェクトのソース
 set(SOURCES
     src/main.cpp
     ${IMGUI_SOURCES}
+    ${GLEW_SOURCES}
 )
 
 # 実行ファイルを作成
@@ -46,7 +52,6 @@ add_executable(${PROJECT_NAME} ${SOURCES})
 # ライブラリをリンク
 if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     target_link_libraries(${PROJECT_NAME}
-        GLEW::GLEW
         glfw
         OpenGL::GL
         -lkernel32
@@ -61,5 +66,5 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
         -ladvapi32
     )
 elseif(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
-    target_link_libraries(${PROJECT_NAME} OpenGL::GL GLEW::GLEW glfw)
+    target_link_libraries(${PROJECT_NAME} OpenGL::GL glfw)
 endif()
