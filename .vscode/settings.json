@@ -3,6 +3,8 @@
     "cmake.buildDirectory": "${workspaceFolder}/build",
     "editor.formatOnSave": true,
     "files.associations": {
-        "*.h": "cpp"
+        "*.jsx": "javascriptreact",
+        "*.h": "cpp",
+        "iostream": "cpp"
     }
 }

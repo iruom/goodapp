@@ -21,6 +21,9 @@ find_package(glfw3 REQUIRED PATHS ${MSYS2_PREFIX}/lib)
 # ImGuiのインクルードディレクトリを追加
 include_directories(src/imgui)
 
+# resourceディレクトリをインクルードディレクトリに追加
+include_directories(resource)
+
 # ImGuiのソースファイル
 set(IMGUI_SOURCES
     src/imgui/imgui.cpp
